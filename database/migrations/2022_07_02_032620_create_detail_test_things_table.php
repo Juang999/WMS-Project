@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTestThingsTable extends Migration
+class CreateDetailTestThingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateTestThingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('test_things', function (Blueprint $table) {
+        Schema::create('detail_test_things', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('product_code');
+            $table->integer('test_thing_id')->constrained('test_things');
+            $table->text('description');
+            $table->integer('qty');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +30,6 @@ class CreateTestThingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test_things');
+        Schema::dropIfExists('detail_test_things');
     }
 }
