@@ -18,8 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/index', function () {
-    return response()->json([
-        'message' => 'hello world'
-    ]);
-});
+Route::get('/GetPoShipMaster', 'Api\PoShipController@index');
